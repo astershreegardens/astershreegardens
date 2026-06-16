@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Notices — Aster Shree Gardens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="tricolor-bar"></div>
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-circle">🌿</div>
+        <div>
+          <div class="site-title">Aster Shree Gardens</div>
+          <div class="site-subtitle">Welfare Association, Serampore</div>
+        </div>
+      </div>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="notices.html">📋 Notices</a></li>
+        <li><a href="meetings.html">📝 Meeting Summaries</a></li>
+        <li><a href="resolutions.html">✅ Consent & Resolutions</a></li>
+        <li><a href="issues.html">🔧 Issues Tracker</a></li>
+        <li><a href="events.html">🎉 Events</a></li>
+        <li><a href="community.html">💬 Community Wall</a></li>
+      </ul>
+    </nav>
+    <div class="tricolor-bar"></div>
+  </header>
+  <main>
+    <h2 class="page-title">📋 Notices</h2>
+    <p class="page-desc">Official notices from the Association Committee. Categories: General | Meeting | Urgent | Event</p>
+    
+  <div class="admin-bar" id="adminBar">
+    <span class="admin-status" id="adminStatus">🔐 Admin access:</span>
+    <div class="pin-input-area" id="pinArea">
+      <input type="password" id="adminPin" placeholder="Enter PIN" maxlength="6" onkeydown="if(event.key==='Enter')verifyPin()">
+      <button class="btn-verify" onclick="verifyPin()">Verify</button>
+    </div>
+    <span id="pinError" style="color:#e53935;font-size:0.85rem;"></span>
+    <button class="btn-post" id="postBtn" style="display:none;" onclick="togglePostPanel()">+ Post New Entry</button>
+  </div>
+    <div class="post-panel" id="postPanel">
+      <h3>📋 Post New Notice</h3>
+      <div class="form-row"><label>Subject *</label><input type="text" id="nSubject" placeholder="Notice subject..."></div>
+      <div class="form-row"><label>Category</label>
+        <select id="nCategory">
+          <option value="General">General</option>
+          <option value="Meeting">Meeting</option>
+          <option value="Urgent">Urgent</option>
+          <option value="Event">Event</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Body *</label><textarea id="nBody" placeholder="Notice details..."></textarea></div>
+      <div class="form-actions">
+        <button class="btn-submit" id="submitBtn" onclick="submitNotice()">Post Notice</button>
+        <button class="btn-cancel" onclick="cancelPost()">Cancel</button>
+      </div>
+    </div>
+    <div id="noticesContainer"><div class="loading"><div class="spinner"></div><p>Loading notices...</p></div></div>
+  </main>
+  <footer>
+    <div class="tricolor-bar"></div>
+    <p style="margin-top:14px;">© 2026 Aster Shree Gardens Welfare Association, Serampore</p>
+    <p style="margin-top:6px;">Building a better community together 🇮🇳</p>
+  </footer>
+  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll('nav a').forEach(a => { if(a.href.includes('notices')) a.classList.add('active'); });
+    loadNotices();
+  </script>
+</body>
+</html>
